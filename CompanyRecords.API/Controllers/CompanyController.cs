@@ -3,12 +3,14 @@ using CompanyRecords.API.Models.DTO;
 using CompanyRecords.API.Models.Entity;
 using CompanyRecords.API.Repositories.Interfaces;
 using CompanyRecords.API.Repositories.Repos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 
 namespace CompanyRecords.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class CompanyController : ControllerBase
     {
