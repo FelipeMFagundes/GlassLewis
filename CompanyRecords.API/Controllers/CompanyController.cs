@@ -48,10 +48,10 @@ namespace CompanyRecords.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<Company>> GetAll() => await _companyRepository.GetAllAsync();
 
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> Update(int id, CompanyDto dto)
+        [HttpPut()]
+        public async Task<IActionResult> Update(CompanyDto dto)
         {
-            var c = await _companyRepository.GetByIdAsync(id);
+            var c = await _companyRepository.GetByIdAsync(dto.Id);
             if (c is null) return NotFound();
 
             if (c.Isin != dto.Isin && await _companyRepository.IsIsinExistsAsync(dto.Isin))
